@@ -73,7 +73,7 @@ describe("Part 2 - reordering, addivity, reversibility", function () {
 
   it("4.10 Dep->rdm->Dep->rdm == Dep->Dep->rdm->rdm", async function () {
 
-    const captureState = async () => humanReadable(stateHandler.all());
+    const captureState = async () => stateHandler.all();
 
     let userA = users[0]
     let userB = users[1];
@@ -107,7 +107,7 @@ describe("Part 2 - reordering, addivity, reversibility", function () {
 
   it("4.11 Dep1->Dep2 == Dep1+Dep2", async function () {
 
-    const captureState = async () => humanReadable(stateHandler.all());
+    const captureState = async () => stateHandler.all();
 
     let userA = users[0]
     let userB = users[1];
@@ -136,7 +136,7 @@ describe("Part 2 - reordering, addivity, reversibility", function () {
 
   it("4.11 Rdm1->Rdm2 == Rdm1+Rdm2", async function () {
 
-    const captureState = async () => humanReadable(stateHandler.all());
+    const captureState = async () => stateHandler.all();
 
     let userA = users[0]
     let userB = users[1];
@@ -163,7 +163,7 @@ describe("Part 2 - reordering, addivity, reversibility", function () {
 
   it("4.14 Dep<->Rdm", async function () {
 
-    const captureState = async () => humanReadable(stateHandler.all());
+    const captureState = async () => stateHandler.all();
 
     let userA = users[0]
 

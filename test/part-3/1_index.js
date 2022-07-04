@@ -2,6 +2,7 @@
 
 
 const { expect } = require("chai");
+const { BigNumber } = require("ethers");
 const { ethers } = hre;
 const {  AMM, toDecimal, User, Token, ZERO_ADDRESS, humanReadable, StateHandler, takeSnapshot } = require("../shared");
 
@@ -72,28 +73,22 @@ describe("Part 2 - concurrent transacion", function () {
     stateHandler = new StateHandler(users, amm, token0, token1);
   });
 
-  it("4.9 Dep->Dep should pass", async function () {
+  it("Lemma 5.4 - Monotonicity of Swaps", async function () {
 
-    const captureState = async () => stateHandler.all();
+    //First capture his networth before making swap
 
-    let userA = users[0]
-    let userB = users[1];
+    //then make ssnap shot one 
 
-    let snapshot = await takeSnapshot();
+    //calculate his gain
 
-    await userA.addLiquidity(toDecimal("20"), toDecimal("20"));
-    await userB.addLiquidity(toDecimal("200"), toDecimal("200"));
-    let endState1 = await captureState();
+    // then do reverse on snapshot
 
-    //Restore state
-    await snapshot.restore();
+    //Calculate gain again
+
+    //it has to be less or more or something
+
     
 
-    await userB.addLiquidity(toDecimal("200"), toDecimal("200"));
-    await userA.addLiquidity(toDecimal("20"), toDecimal("20"));
-
-    let endState2 = await captureState();
-    expect(endState1).to.deep.eq(endState2);
 
 
 

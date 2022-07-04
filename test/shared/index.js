@@ -209,6 +209,29 @@ class Token  {
         }
     }
 
+    async swapExchangeRate(x, isToken0ToToken) {
+        const {_reserve0, _reserve1 } = await this.amm.pair.getReserves();
+        
+        if(isToken0ToToken) {
+            if(!_reserve0.eq(0)) {
+                return  {
+                    swapExchangeRate: _reserve1.div(_reserve0.add(x))
+                }
+            } else return {
+                swapExchangeRate: 0
+            }
+        } else {
+            if(!_reserve1.eq(0)) {
+                return  {
+                    swapExchangeRate: _reserve0.div(_reserve1.add(x))
+                }
+            } else return {
+                swapExchangeRate: 0
+            }
+        }
+        
+    }
+
     async netWorth() {
       
         let globalNetworth = BigNumber.from(0);
